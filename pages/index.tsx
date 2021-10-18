@@ -13,6 +13,7 @@ export default function Home() {
     <Head>
       <title>Search App</title>
       <meta name="description" content="Github search app" />
+      <link rel = "icon" type = "image/png" href = "/logo.svg" />
     </Head>
     <Container>
       <div className="logo">
@@ -22,7 +23,7 @@ export default function Home() {
         <input type="text" placeholder="Search for any github profile" ref={ref}/>
         <button type="submit">Search</button>
       </form>
-      <footer><Link href="/">Developed by João</Link></footer>
+      <footer><Link href="/">Developed by João ©</Link></footer>
     </Container>
     </>
   )

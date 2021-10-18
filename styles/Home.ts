@@ -34,6 +34,15 @@ const up = keyframes`
   }
 `;
 
+const appear = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 export const Container = styled.main`
   min-height: 100vh;
   display: flex;
@@ -43,7 +52,13 @@ export const Container = styled.main`
   height: 100vh;
   background: ${props => props.theme.background};
   color: ${props => props.theme.textColor1};
-
+  footer {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    margin: 16px;
+  }
   .logo {
     position: absolute;
     top: 73px;
@@ -71,6 +86,7 @@ export const Container = styled.main`
   }
 
   form {
+    animation: ${appear} .5s;
     margin-top: 116px;
 
     display: flex;
