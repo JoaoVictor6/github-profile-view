@@ -7,9 +7,9 @@ export type Theme = {
 }
 
 export const DarkTheme: Theme = {
-  background: '#1B1F23',
-  blue: '#4969ED',
-  grey: '#6A737D',
-  textColor1: '#FFF',
-  textColor2: '#FAFBFF'
-}
+  background: "#1B1F23",
+  blue: "#4969ED",
+  grey: "#6A737D",
+  textColor1: "#FFF",
+  textColor2: "#FAFBFF"
+};
