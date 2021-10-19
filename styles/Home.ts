@@ -147,5 +147,20 @@ export const Container = styled.main`
       }
     }
   }
+  @media (max-width: 584px) {
+    .logo {
+      left: 40px;
+      top: 60px;
+      font-size: 64px;
+      width: 235px;
+
+      &::before {
+        width: 118px;
+        height: 45px;
+        top: 47px;
+        left: 0;
+      }
+    }
+  }
 `;
 
