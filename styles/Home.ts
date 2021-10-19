@@ -34,6 +34,15 @@ const up = keyframes`
   }
 `;
 
+const upMobile = keyframes`
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 118px;
+  }
+`;
+
 const appear = keyframes`
   0% {
     opacity: 0;
@@ -71,6 +80,7 @@ export const Container = styled.main`
 
     animation: ${slideup} .15s ease-in-out;
     z-index: 1;
+    transition: all .45s;
 
     &::before {
       content: '';
@@ -159,6 +169,7 @@ export const Container = styled.main`
         height: 45px;
         top: 47px;
         left: 0;
+        animation: ${upMobile} .45s ease-in-out;
       }
     }
   }
@@ -177,6 +188,14 @@ export const Container = styled.main`
       button {
         font-size: 20px;
       }
+    }
+  }
+  @media (max-height: 384px) {
+    .logo, footer{
+      display: none;
+    }
+    form {
+      margin: 0;
     }
   }
 `;
