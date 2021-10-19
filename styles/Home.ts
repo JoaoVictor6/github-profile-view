@@ -129,5 +129,23 @@ export const Container = styled.main`
       padding: 12px;
     }
   }
+
+  @media (max-width: 834px) {
+    .logo {
+      left: 58px;
+      top: 208px;
+    }
+    form {
+      width: 100%;
+      align-items: stretch;
+      input { 
+        margin: 0 54px;
+        width: auto;
+      }
+      button {
+        margin: 0 auto;
+      }
+    }
+  }
 `;
 
