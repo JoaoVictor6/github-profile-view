@@ -162,5 +162,22 @@ export const Container = styled.main`
       }
     }
   }
+  @media (max-width: 502px) {
+    form {
+      align-items: center;
+      input, button {
+        margin: 0;
+        width: 316px;
+        border-radius: 8px;
+      }
+
+      input {
+        font-size: 18px;
+      }
+      button {
+        font-size: 20px;
+      }
+    }
+  }
 `;
 
