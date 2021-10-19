@@ -172,6 +172,9 @@ export const Container = styled.main`
         animation: ${upMobile} .45s ease-in-out;
       }
     }
+    footer {
+      
+    }
   }
   @media (max-width: 502px) {
     form {
@@ -188,6 +191,11 @@ export const Container = styled.main`
       button {
         font-size: 20px;
       }
+    }
+  }
+  @media (max-height: 466px) {
+    .logo {
+      top: 20px;
     }
   }
   @media (max-height: 384px) {
