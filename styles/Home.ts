@@ -192,6 +192,9 @@ export const Container = styled.main`
         font-size: 20px;
       }
     }
+    footer {
+      margin: 4px;
+    }
   }
   @media (max-height: 466px) {
     .logo {
