@@ -60,7 +60,7 @@ export const Container = styled.main`
   align-items: center;
   height: 100vh;
   background: ${props => props.theme.background};
-  color: ${props => props.theme.textColor1};
+  color: ${props => props.theme.white};
   footer {
     display: block;
     position: absolute;
@@ -73,7 +73,7 @@ export const Container = styled.main`
     top: 73px;
     left: 100px;
     user-select: none;
-    color: ${props => props.theme.textColor2};
+    color: ${props => props.theme.white2};
     
     font-size: 98px;
     font-weight: 600;
@@ -104,7 +104,7 @@ export const Container = styled.main`
     align-items: center;
     gap: 28px;  
 
-    & > * {color: ${props => props.theme.textColor1};}
+    & > * {color: ${props => props.theme.white};}
     input {
       border: none;
       background: transparent;
