@@ -8,4 +8,5 @@ export const DarkTheme: DefaultTheme = {
   white: "#FFF",
   white2: "#FAFBFF",
   greyText: "#6A737D",
+  weakGrey: "#E5E5E5"
 };

@@ -7,5 +7,6 @@ import "styled-components";declare module "styled-components" {
   blue: string
   grey: string
   greyText: string
+  weakGrey: string
   }
 }
