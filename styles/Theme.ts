@@ -1,14 +1,6 @@
-export type Theme = {
-  background: string
-  background2: string
-  white: string
-  white2: string
-  blue: string
-  grey: string
-  greyText: string
-}
+import { DefaultTheme } from "styled-components";
 
-export const DarkTheme: Theme = {
+export const DarkTheme: DefaultTheme = {
   background: "#1B1F23",
   background2: "#1F2429",
   blue: "#4969ED",
