@@ -16,7 +16,7 @@ export default function User(){
   const router = useRouter();
   const {githubName} = router.query;
   const [userInfo, setUserInfo] = useState({} as UserInfoProps);
-
+  
   useEffect(() => {
     async function apiUserInfo(user:string){
       const request = await fetch(`https://api.github.com/users/${user}`); 
@@ -31,7 +31,7 @@ export default function User(){
   }, []);
   return(
     <>
-      <Menu 
+      <Menu
         avatar_url={userInfo.avatar_url}
         bio={userInfo.bio}
         followers={userInfo.followers}
