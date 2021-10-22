@@ -28,7 +28,6 @@ export default function Menu({
   useEffect(() => {
     if(!inView){
       setSticky(!sticky);
-      console.log("teste", inView);
     }
   }, [inView]);
 
