@@ -49,7 +49,8 @@ export default function User(){
       });
       
     })();
-  }, [githubName]);
+  }, []);
+
   return(
     <>
       <Head>
