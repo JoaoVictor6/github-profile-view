@@ -1,7 +1,18 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const appear = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.menu`
+  *{animation: ${appear} .5s;}
   background: ${prop => prop.theme.background};
+  
   .user-data{
     display: flex;
     align-items: center;
