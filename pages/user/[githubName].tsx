@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Menu from "../../src/components/Menu";
 import { Container } from "../../styles/user/style";
 import Card from "../../src/components/Card";
+import { useRouter } from "next/router";
 
 interface UserInfoProps {
   avatar_url: string
@@ -26,10 +26,18 @@ interface UserRepoProps {
 
 export default function User(){
   const router = useRouter();
-  const {githubName} = router.query;
+  // const {} = router.query;
   const [userInfo, setUserInfo] = useState({} as UserInfoProps);
   const [userRepo, setUserRepo] = useState<UserRepoProps[]>([] as UserRepoProps[]);
+  const [githubName, setGithubName] = useState(router.query.githubName as string);
   
+  useEffect(() => {
+    if (router && router.query) {
+      console.log(router.query);
+      setGithubName(router.query.githubName as string);
+    }
+  }, [router]);
+
   useEffect(() => {
     async function apiUserInfo(user:string){
       const request = await fetch(`https://api.github.com/users/${user}`); 
@@ -37,7 +45,7 @@ export default function User(){
       
       return response;
     }
-    apiUserInfo(githubName as string)
+    apiUserInfo(githubName)
       .then(res => {
         setUserInfo({...res as UserInfoProps});
       });
@@ -49,7 +57,7 @@ export default function User(){
       });
       
     })();
-  }, []);
+  }, [githubName]);
 
   return(
     <>
@@ -68,7 +76,7 @@ export default function User(){
       />
       <Container>
         <div className="repos">
-          {userRepo?.map((repoInfo, index) => (
+          {userRepo.length >= 0 && userRepo?.map((repoInfo, index) => (
             <Card 
               key={`repo_id${index}`}
               name={repoInfo.name}
