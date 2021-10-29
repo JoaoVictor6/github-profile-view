@@ -68,6 +68,45 @@ export const Container = styled.menu`
       }
     }
   }
+  @media (max-width: 832px){
+    .user-data {
+      img {margin-left: 32px;}
+    }
+  }
+  @media (max-width: 605px) {
+    .user-data {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0 16px;
+      padding-top: 40px;
+      gap: 16px;
+
+      section{
+        margin: 0;
+        display: inline-block;
+        width: 100%;
+        h1 {
+          text-align: center;
+          font-size: 32px;
+          span {
+            font-size: 22px;
+          }
+        }
+        .description {
+          font-size: 20px;
+        }
+      }
+
+      img {
+        margin: 0;
+        align-self: center;
+        width: 250px;
+        height: 250px;
+      }
+    }
+
+  }
+  
 `;
 
 export const Bold = styled.span`
