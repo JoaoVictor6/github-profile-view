@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const gradient = keyframes`
   from {
@@ -34,6 +34,15 @@ const up = keyframes`
   }
 `;
 
+const upMobile = keyframes`
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 118px;
+  }
+`;
+
 const appear = keyframes`
   0% {
     opacity: 0;
@@ -51,7 +60,7 @@ export const Container = styled.main`
   align-items: center;
   height: 100vh;
   background: ${props => props.theme.background};
-  color: ${props => props.theme.textColor1};
+  color: ${props => props.theme.white};
   footer {
     display: block;
     position: absolute;
@@ -64,13 +73,14 @@ export const Container = styled.main`
     top: 73px;
     left: 100px;
     user-select: none;
-    color: ${props => props.theme.textColor2};
+    color: ${props => props.theme.white2};
     
     font-size: 98px;
     font-weight: 600;
 
     animation: ${slideup} .15s ease-in-out;
     z-index: 1;
+    transition: all .45s;
 
     &::before {
       content: '';
@@ -94,7 +104,7 @@ export const Container = styled.main`
     align-items: center;
     gap: 28px;  
 
-    & > * {color: ${props => props.theme.textColor1};}
+    & > * {color: ${props => props.theme.white};}
     input {
       border: none;
       background: transparent;
@@ -127,6 +137,76 @@ export const Container = styled.main`
       font-weight: 500;
       font-size: 18px;
       padding: 12px;
+    }
+  }
+
+  @media (max-width: 834px) {
+    .logo {
+      left: 58px;
+      top: 208px;
+    }
+    form {
+      width: 100%;
+      align-items: stretch;
+      input { 
+        margin: 0 54px;
+        width: auto;
+      }
+      button {
+        margin: 0 auto;
+      }
+    }
+  }
+  @media (max-width: 584px) {
+    .logo {
+      left: 40px;
+      top: 60px;
+      font-size: 64px;
+      width: 235px;
+
+      &::before {
+        width: 118px;
+        height: 45px;
+        top: 47px;
+        left: 0;
+        animation: ${upMobile} .45s ease-in-out;
+      }
+    }
+    footer {
+      
+    }
+  }
+  @media (max-width: 502px) {
+    form {
+      align-items: center;
+      input, button {
+        margin: 0;
+        width: 316px;
+        border-radius: 8px;
+      }
+
+      input {
+        font-size: 18px;
+      }
+      button {
+        font-size: 20px;
+      }
+    }
+    footer {
+      margin: 4px;
+    }
+  }
+  @media (max-height: 466px) {
+    .logo {
+      top: 20px;
+    }
+  }
+  @media (max-height: 384px) {
+    .logo, footer{
+      display: none;
+    }
+    form {
+      margin: 0;
     }
   }
 `;
