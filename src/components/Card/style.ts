@@ -76,4 +76,9 @@ export const Content = styled.div`
     font-size: 16px;
     color: ${props => props.theme.white2};
   }
+
+  @media (max-width: 670px) {
+    width: auto;
+    margin: 0 20px;
+  }
 `;
