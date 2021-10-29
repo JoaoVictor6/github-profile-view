@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Menu from "../../src/components/Menu";
+import FabScrollTop from "../../src/components/FabScrollTop";
 import { Container } from "../../styles/user/style";
 import Card from "../../src/components/Card";
 import { useRouter } from "next/router";
@@ -65,6 +66,7 @@ export default function User(){
         <title>{userInfo.name} - Github profile</title>
         <meta name="description" content="Github user profile" />
       </Head>
+      <FabScrollTop />
       <Menu
         avatar_url={userInfo.avatar_url}
         bio={userInfo.bio}
