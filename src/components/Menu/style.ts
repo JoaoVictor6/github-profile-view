@@ -68,6 +68,12 @@ export const Container = styled.menu`
       }
     }
   }
+  @media (max-width: 832px){
+    .user-data {
+      img {margin-left: 32px;}
+    }
+  }
+  
 `;
 
 export const Bold = styled.span`
