@@ -25,7 +25,7 @@ export const Content = styled.div`
   background: ${props => props.theme.background2};
   cursor: pointer;
   width: 669px;
-  height: 122px;
+  min-height: 122px;
   padding: 12px 16px;
   * {
     font-family: 'Open Sans', sans-serif;
@@ -73,6 +73,7 @@ export const Content = styled.div`
 
   .description {
     margin-top: 10px;
+    padding-bottom: 10px;
     font-size: 16px;
     color: ${props => props.theme.white2};
   }
