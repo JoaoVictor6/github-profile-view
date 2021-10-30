@@ -18,6 +18,12 @@ export const Container = styled.section`
     visibility: visible;
     transition: all .45s;
   }
+
+  & > a {
+    @media (max-width: 670px) {
+      width: 100%;
+    }
+  }
 `;
 
 export const Content = styled.div`
