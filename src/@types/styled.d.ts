@@ -8,5 +8,6 @@ import "styled-components";declare module "styled-components" {
   grey: string
   greyText: string
   weakGrey: string
+  backgroundTransparent: string
   }
 }
