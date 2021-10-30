@@ -31,4 +31,13 @@ export const Container = styled.form`
       fill: ${props => props.theme.weakGrey};
     }
   }
+
+  @media (max-width: 834px) {
+    position: static;
+    width: 90%;
+    margin: 16px auto;
+    input {
+      width:100%;
+    }
+  }
 `;

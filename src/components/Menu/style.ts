@@ -68,6 +68,11 @@ export const Container = styled.menu`
       }
     }
   }
+  @media (max-width: 834px) {
+    .user-data {
+      padding-top: 0;
+    }
+  }
   @media (max-width: 832px){
     .user-data {
       img {margin-left: 32px;}
@@ -78,7 +83,6 @@ export const Container = styled.menu`
       flex-direction: column;
       align-items: flex-start;
       margin: 0 16px;
-      padding-top: 40px;
       gap: 16px;
 
       section{
