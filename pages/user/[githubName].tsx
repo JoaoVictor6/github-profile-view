@@ -5,6 +5,7 @@ import FabScrollTop from "../../src/components/FabScrollTop";
 import { Container } from "../../styles/user/style";
 import Card from "../../src/components/Card";
 import { useRouter } from "next/router";
+import SearchInput from "../../src/components/SearchInput";
 
 interface UserInfoProps {
   avatar_url: string
@@ -27,7 +28,7 @@ interface UserRepoProps {
 
 export default function User(){
   const router = useRouter();
-  // const {} = router.query;
+
   const [userInfo, setUserInfo] = useState({} as UserInfoProps);
   const [userRepo, setUserRepo] = useState<UserRepoProps[]>([] as UserRepoProps[]);
   const [githubName, setGithubName] = useState(router.query.githubName as string);
@@ -66,17 +67,18 @@ export default function User(){
         <title>{userInfo.name} - Github profile</title>
         <meta name="description" content="Github user profile" />
       </Head>
-      <FabScrollTop />
-      <Menu
-        avatar_url={userInfo.avatar_url}
-        bio={userInfo.bio}
-        followers={userInfo.followers}
-        following={userInfo.following}
-        html_url={userInfo.html_url}
-        login={userInfo.login}
-        name={userInfo.name}
-      />
       <Container>
+        <FabScrollTop />
+        <SearchInput />
+        <Menu
+          avatar_url={userInfo.avatar_url}
+          bio={userInfo.bio}
+          followers={userInfo.followers}
+          following={userInfo.following}
+          html_url={userInfo.html_url}
+          login={userInfo.login}
+          name={userInfo.name}
+        />
         <div className="repos">
           {userRepo.length >= 0 && userRepo?.map((repoInfo, index) => (
             <Card 
