@@ -10,7 +10,9 @@ const appear = keyframes`
 `;
 
 export const Container = styled.section`
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & > * {animation: ${appear} .45s;}
   .appear {
     visibility: visible;
