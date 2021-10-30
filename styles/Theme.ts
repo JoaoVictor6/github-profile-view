@@ -8,5 +8,6 @@ export const DarkTheme: DefaultTheme = {
   white: "#FFF",
   white2: "#FAFBFF",
   greyText: "#6A737D",
-  weakGrey: "#E5E5E5"
+  weakGrey: "#E5E5E5",
+  backgroundTransparent: "rgba(106,115,125,0.49)"
 };
