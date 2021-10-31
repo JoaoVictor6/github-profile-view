@@ -3,8 +3,18 @@ const errorCodeFont = css`
   font-size: 164px;
   line-height: 164px;
   font-weight: 700;
+`;
 
-  /* font-size: clamp(1.1rem, 0.7153rem + 1.6368vw, 1.5rem); */
+const errorCodeFontMedium = css`
+  font-size: 158px;
+  line-height: 158px;
+  font-weight: 700;
+`;
+
+const errorCodeFontMobile = css`
+  font-size: 116px;
+  line-height: 116px;
+  font-weight: 700;
 `;
 
 export const Container = styled.div`
@@ -45,6 +55,41 @@ export const Container = styled.div`
     transition: all .4s;
     &:hover {
       filter: brightness(.7);
+    }
+  }
+
+  @media (max-width: 834px) {
+    gap: 30px;
+    .message {
+      .error-code {
+        ${errorCodeFontMedium}; 
+      }
+      .message-user {
+        font-size: 48px;
+      }
+    }
+  }
+
+  @media (max-width: 704px) {
+    
+    .message {
+      display: inline-flex;
+      width: calc(100% - 32px);
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      .error-code {
+        ${errorCodeFontMobile}; 
+      }
+      .message-user {
+        font-size: 32px;
+        align-self: flex-end;
+      }
+    }
+
+    a {
+      margin-top: 64px; 
+      align-self: center;
     }
   }
 `;
