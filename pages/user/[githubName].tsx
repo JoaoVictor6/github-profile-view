@@ -15,6 +15,7 @@ interface UserInfoProps {
   followers: string
   following: string
   bio: string
+  message?: string
 }
 
 interface UserRepoProps {
@@ -35,7 +36,6 @@ export default function User(){
   
   useEffect(() => {
     if (router && router.query) {
-      console.log(router.query);
       setGithubName(router.query.githubName as string);
     }
   }, [router]);
@@ -49,6 +49,7 @@ export default function User(){
     }
     apiUserInfo(githubName)
       .then(res => {
+        res.message && router.push("/error/404");
         setUserInfo({...res as UserInfoProps});
       });
 
