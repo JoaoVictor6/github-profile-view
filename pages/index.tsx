@@ -18,7 +18,6 @@ export default function Home() {
       <Head>
         <title>Search App</title>
         <meta name="description" content="Github search app" />
-        <link rel = "icon" type = "image/png" href = "/logo.svg" />
       </Head>
       <Container>
         <div className="logo">
