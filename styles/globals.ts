@@ -1,12 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-
-* {
-    scroll-behavior: smooth;
-    padding: 0;
-    margin: 0;
-    font-family: 'Poppins', sans-serif
+  * {
+      scroll-behavior: smooth;
+      padding: 0;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
   }
 
   a {
@@ -14,7 +14,12 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
-  * {
-    box-sizing: border-box;
+  * > input {
+    caret-color: transparent;
+    &:focus {
+      &::placeholder {
+        color: transparent;
+      }
+    }
   }
 `;
