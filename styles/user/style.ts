@@ -5,7 +5,6 @@ export const Container = styled.div`
   background: ${props => props.theme.background};
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
   .repos {
     margin-top: 32px;
