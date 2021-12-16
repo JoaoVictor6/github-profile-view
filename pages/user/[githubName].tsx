@@ -6,6 +6,7 @@ import { Container } from "../../styles/user/style";
 import Card from "../../src/components/Card";
 import { useRouter } from "next/router";
 import SearchInput from "../../src/components/SearchInput";
+import { apiSearch } from "../../src/services/github";
 
 interface UserInfoProps {
   avatar_url: string
@@ -41,25 +42,20 @@ export default function User(){
   }, [router]);
 
   useEffect(() => {
-    async function apiUserInfo(user:string){
-      const request = await fetch(`https://api.github.com/users/${user}`); 
-      const response = await request.json() as UserInfoProps;
-      
-      return response;
+    async function apiUserRepos(){
+      const repos = await apiSearch<UserRepoProps[]>(githubName, {repos: true});
+      if(!repos)return;
+      setUserRepo(repos); 
     }
-    apiUserInfo(githubName)
-      .then(res => {
-        res.message && router.push("/error/404");
-        setUserInfo({...res as UserInfoProps});
-      });
-
-    (async () => {
-      const repoResponse = await fetch(`https://api.github.com/users/${githubName}/repos`);
-      repoResponse.json().then(res => {
-        setUserRepo(res);  
-      });
-      
-    })();
+    
+    async function apiUserInfo(){
+      const user = await apiSearch<UserInfoProps>(githubName); 
+      if(!user) return;
+      apiUserRepos(); 
+      setUserInfo(user as UserInfoProps);
+    }
+    
+    apiUserInfo();
   }, [githubName]);
 
   return(
