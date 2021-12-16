@@ -13,7 +13,7 @@ interface UserRepoProps {
 
 export default function Card({ name, html_url, fork, language, stargazers_count, description, key }: UserRepoProps){
   const { ref, inView } = useInView({
-    threshold: 0.6,
+    threshold: 0.2,
     delay: 20,
     triggerOnce: true
   });
@@ -21,7 +21,7 @@ export default function Card({ name, html_url, fork, language, stargazers_count,
   return (
     <Container key={key || ""}>
       <a href={html_url} target="_blank" rel="noreferrer">
-        <Content ref={ref} className={(inView && "appear") as string} >
+        <Content ref={ref} className={inView ? "appear" : ""} >
           <hgroup>
             <div className="name">
               {name}
