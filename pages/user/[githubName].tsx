@@ -7,89 +7,67 @@ import Card from "../../src/components/Card";
 import { useRouter } from "next/router";
 import SearchInput from "../../src/components/SearchInput";
 import { apiSearch } from "../../src/services/github";
-
-interface UserInfoProps {
-  avatar_url: string
-  html_url: string
-  name: string
-  login: string
-  followers: string
-  following: string
-  bio: string
-  message?: string
-}
-
-interface UserRepoProps {
-  name: string
-  html_url: string
-  fork: boolean
-  language: string
-  stargazers_count: number
-  description: string
-}
+import useSWR from "swr";
 
 export default function User(){
   const router = useRouter();
-
-  const [userInfo, setUserInfo] = useState({} as UserInfoProps);
-  const [userRepo, setUserRepo] = useState<UserRepoProps[]>([] as UserRepoProps[]);
-  const [githubName, setGithubName] = useState(router.query.githubName as string);
+  const userFetcher = async (user:string) => (await apiSearch(user));
   
+  const [githubName, setGithubName] = useState(router.query.githubName as string);
+  const {data:userData} = useSWR(githubName, userFetcher);
+  async function notFound(){
+    await router.push("/404/");
+  }
+
   useEffect(() => {
-    if (router && router.query) {
+    if(userData === null)notFound();
+  }, [userData]);
+
+  useEffect(() => {
+    if (router.query.githubName) {
       setGithubName(router.query.githubName as string);
     }
   }, [router]);
-
-  useEffect(() => {
-    async function apiUserRepos(){
-      const repos = await apiSearch<UserRepoProps[]>(githubName, {repos: true});
-      if(!repos)return;
-      setUserRepo(repos); 
-    }
-    
-    async function apiUserInfo(){
-      const user = await apiSearch<UserInfoProps>(githubName); 
-      if(!user) return;
-      apiUserRepos(); 
-      setUserInfo(user as UserInfoProps);
-    }
-    
-    apiUserInfo();
-  }, [githubName]);
-
+  
   return(
     <>
-      <Head>
-        <title>{userInfo.name} - Github profile</title>
-        <meta name="description" content="Github user profile" />
-      </Head>
-      <Container>
-        <FabScrollTop />
-        <SearchInput />
-        <Menu
-          avatar_url={userInfo.avatar_url}
-          bio={userInfo.bio}
-          followers={userInfo.followers}
-          following={userInfo.following}
-          html_url={userInfo.html_url}
-          login={userInfo.login}
-          name={userInfo.name}
-        />
-        <div className="repos">
-          {userRepo.length >= 0 && userRepo?.map((repoInfo, index) => (
-            <Card 
-              key={`repo_id${index}`}
-              name={repoInfo.name}
-              description={repoInfo.description}
-              fork={repoInfo.fork}
-              html_url={repoInfo.html_url}
-              language={repoInfo.language}
-              stargazers_count={repoInfo.stargazers_count}
-            />
-          ))}
-        </div>
-      </Container>
+      {
+        userData && (
+          <>
+            <Head>
+              <title>{userData.name+" - "}Github profile</title>
+              <meta name="description" content="Github user profile" />
+              <meta property="og:image" content={userData.avatar_url} />
+            </Head>
+            <Container>
+              <FabScrollTop />
+              <SearchInput />
+              <Menu
+                avatar_url={userData.avatar_url}
+                bio={userData.bio}
+                followers={userData.followers}
+                following={userData.following}
+                html_url={userData.html_url}
+                login={userData.login}
+                name={userData.name}
+              />
+              <div className="repos">
+                {userData.repo.length >= 0 && userData.repo.map((repoInfo, index) => (
+                  <Card 
+                    key={`repo_id${index+66}`}
+                    name={repoInfo.name}
+                    description={repoInfo.description}
+                    fork={repoInfo.fork}
+                    html_url={repoInfo.html_url}
+                    language={repoInfo.language}
+                    stargazers_count={repoInfo.stargazers_count}
+                  />
+                ))}
+              </div>
+            </Container>
+          </>
+        )
+      }
     </>
   );
 }

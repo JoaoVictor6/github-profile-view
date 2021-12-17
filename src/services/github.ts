@@ -3,17 +3,35 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "https://api.github.com"
 });
-type configSearch = {
-  repos: boolean
+
+interface Repositories {
+  name: string
+  html_url: string
+  fork: boolean
+  language: string
+  stargazers_count: number
+  description: string
 }
-export async function apiSearch<T>(user: string, config?: configSearch): Promise<T | null> {
+interface UserInfo {
+  avatar_url: string
+  html_url: string
+  name: string
+  login: string
+  followers: string
+  following: string
+  bio: string
+  message?: string
+  repo: Repositories[]
+}
+
+export async function apiSearch(user: string): Promise<UserInfo | null> {
+  
   try {
-    if(config?.repos){
-      const response  = await api.get<T>(`/users/${user}/repos`);
-      return response.data as T;
-    }
-    const response  = await api.get<T>(`/users/${user}`);
-    return response.data as T;
+    const repoResponse  = (await api.get<Repositories[]>(`/users/${user}/repos`)).data;
+    const userResponse  = (await api.get<UserInfo>(`/users/${user}`)).data;
+    
+    return {...userResponse, repo: repoResponse};
+    
   } catch(err) {
     return null;
   }
