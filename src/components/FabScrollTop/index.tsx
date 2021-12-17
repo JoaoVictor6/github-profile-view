@@ -6,7 +6,6 @@ export default function FabScrollTop(){
   function scrollTopHandler(){
     window.scroll(0,0);
   }
-  console.log(scrollTop);
   return(
     <Fab
       onClick={scrollTopHandler} 
