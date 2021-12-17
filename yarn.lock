@@ -4124,6 +4124,11 @@ supports-color@^8.0.0:
   dependencies:
     has-flag "^4.0.0"
 
+swr@^1.1.2-beta.0:
+  version "1.1.2-beta.0"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.1.2-beta.0.tgz#4c25f3a8e1f825b15426dd8c62d10cec95429be6"
+  integrity sha512-e7ZcPCrEvGX+s4jDtBwV9c+HKqHzG1secuwU8bYjnnGkSJMneyn7OaabJKtRh922DH5a3k2vvBdhftoSL8bHJQ==
+
 table@^6.0.9:
   version "6.7.2"
   resolved "https://registry.yarnpkg.com/table/-/table-6.7.2.tgz#a8d39b9f5966693ca8b0feba270a78722cbaf3b0"
