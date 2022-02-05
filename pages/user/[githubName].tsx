@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useEffect } from "react";
 import Menu from "../../src/components/Menu";
 import FabScrollTop from "../../src/components/FabScrollTop";
@@ -63,43 +62,48 @@ function User({error, repo, userInfo: userData}: InferGetServerSidePropsType<Get
     if(error.message !== ""){
       router.push("/404/");
     }
-  },[]);
+  },[router]);
   
   return(
     <>
-      <HeadElement 
-        title={`${userData.name} - Github profile`}
-        description={userData.bio}
-        url={`/user/${userData.login}`}
-        imgUrl={userData.avatar_url}
-      />
-      <Container>
-        <FabScrollTop />
-        <SearchInput />
-        <Menu
-          avatar_url={userData.avatar_url}
-          bio={userData.bio}
-          followers={userData.followers}
-          following={userData.following}
-          html_url={userData.html_url}
-          login={userData.login}
-          name={userData.name}
-        />
-        <div className="repos">
-          {repo.length >= 0 && repo.map((repoInfo, index) => (
-            <Card 
-              key={`repo_id${index+66}`}
-              name={repoInfo.name}
-              description={repoInfo.description}
-              fork={repoInfo.fork}
-              html_url={repoInfo.html_url}
-              language={repoInfo.language}
-              stargazers_count={repoInfo.stargazers_count}
+      {userData && (
+        <>
+          <HeadElement 
+            title={`${userData.name} - Github profile`}
+            description={userData.bio}
+            url={`/user/${userData.login}`}
+            imgUrl={userData.avatar_url}
+          />
+          <Container>
+            <FabScrollTop />
+            <SearchInput />
+            <Menu
+              avatar_url={userData.avatar_url}
+              bio={userData.bio}
+              followers={userData.followers}
+              following={userData.following}
+              html_url={userData.html_url}
+              login={userData.login}
+              name={userData.name}
             />
-          ))}
-        </div>
-      </Container>
-    </>);
+            <div className="repos">
+              {repo.length >= 0 && repo.map((repoInfo, index) => (
+                <Card 
+                  key={`repo_id${index+66}`}
+                  name={repoInfo.name}
+                  description={repoInfo.description}
+                  fork={repoInfo.fork}
+                  html_url={repoInfo.html_url}
+                  language={repoInfo.language}
+                  stargazers_count={repoInfo.stargazers_count}
+                />
+              ))}
+            </div>
+          </Container>
+        </>
+      )}
+    </>
+  );
 }
 
 export default User;
