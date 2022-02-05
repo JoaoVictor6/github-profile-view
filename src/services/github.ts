@@ -28,9 +28,34 @@ export async function apiSearch(user: string): Promise<UserInfo | null> {
   
   try {
     const repoResponse  = (await api.get<Repositories[]>(`/users/${user}/repos`)).data;
-    const userResponse  = (await api.get<UserInfo>(`/users/${user}`)).data;
-    
-    return {...userResponse, repo: repoResponse};
+    const {
+      avatar_url, 
+      bio, 
+      followers, 
+      following, 
+      html_url, 
+      login, 
+      name
+    } = (await api.get<UserInfo>(`/users/${user}`)).data;
+
+    return {
+      avatar_url, 
+      bio, 
+      followers, 
+      following, 
+      html_url, 
+      login, 
+      name
+      , 
+      repo: repoResponse.map(({name, description, fork, html_url, language, stargazers_count}) => ({
+        name, 
+        description, 
+        fork, 
+        html_url, 
+        language, 
+        stargazers_count
+      }))
+    };
     
   } catch(err) {
     return null;
