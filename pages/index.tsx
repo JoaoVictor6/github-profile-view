@@ -23,10 +23,6 @@ export default function Home() {
         imgUrl="https://i.ibb.co/XyrXq2X/thumb-Card.png"
         url="/"
       />
-      <Head>
-        <title></title>
-        <meta name="description" content="" />
-      </Head>
       <Container>
         <div className="logo">
         Git search
