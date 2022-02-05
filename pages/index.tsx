@@ -4,7 +4,6 @@ import {useRouter} from "next/router";
 import { FormEvent, useRef, } from "react";
 import { HeadElement } from "../src/components/HeadElement";
 import { Container } from "../styles/Home";
-import thumb from "../public/ThumbCard.png";
 
 export default function Home() {
   const ref = useRef<HTMLInputElement>(null);
@@ -23,10 +22,6 @@ export default function Home() {
         imgUrl="https://i.ibb.co/XyrXq2X/thumb-Card.png"
         url="/"
       />
-      <Head>
-        <title></title>
-        <meta name="description" content="" />
-      </Head>
       <Container>
         <div className="logo">
         Git search
