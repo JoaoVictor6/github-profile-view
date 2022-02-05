@@ -1,7 +1,7 @@
-import Head from "next/head";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import { FormEvent, useRef, } from "react";
+import { HeadElement } from "../src/components/HeadElement";
 import { Container } from "../styles/Home";
 
 export default function Home() {
@@ -15,10 +15,12 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Search App</title>
-        <meta name="description" content="Github search app" />
-      </Head>
+      <HeadElement 
+        title="Search App"
+        description="Github search app"
+        imgUrl="https://i.ibb.co/XyrXq2X/thumb-Card.png"
+        url="/"
+      />
       <Container>
         <div className="logo">
         Git search
