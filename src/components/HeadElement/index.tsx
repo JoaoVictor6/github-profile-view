@@ -12,7 +12,7 @@ export function HeadElement({ title, description, url, imgUrl }:HeadElementProps
     <Head>
       {/* <!-- Primary Meta Tags --> */}
       <title>{title}</title>
-      <meta name="title" content="GIthub user preview" />
+      <meta name="title" content={title} />
       <meta name="description" content={description} />
 
       {/* <!-- Open Graph / Facebook --> */}
