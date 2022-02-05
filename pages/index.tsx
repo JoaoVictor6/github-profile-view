@@ -20,7 +20,7 @@ export default function Home() {
       <HeadElement 
         title="Search App"
         description="Github search app"
-        imgUrl={thumb.src}
+        imgUrl="https://i.ibb.co/XyrXq2X/thumb-Card.png"
         url="/"
       />
       <Head>
