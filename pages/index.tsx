@@ -2,7 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import { FormEvent, useRef, } from "react";
+import { HeadElement } from "../src/components/HeadElement";
 import { Container } from "../styles/Home";
+import thumb from "../public/ThumbCard.png";
 
 export default function Home() {
   const ref = useRef<HTMLInputElement>(null);
@@ -15,9 +17,15 @@ export default function Home() {
 
   return (
     <>
+      <HeadElement 
+        title="Search App"
+        description="Github search app"
+        imgUrl={thumb.src}
+        url="/"
+      />
       <Head>
-        <title>Search App</title>
-        <meta name="description" content="Github search app" />
+        <title></title>
+        <meta name="description" content="" />
       </Head>
       <Container>
         <div className="logo">
