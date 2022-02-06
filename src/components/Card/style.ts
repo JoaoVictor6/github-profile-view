@@ -1,33 +1,19 @@
-import styled, { keyframes } from "styled-components";
-
-const appear = keyframes`
-  to{   
-    transform: translateX(-10px);
-  }
-  from {
-    transform: translateX(0);
-  }
-`;
+import styled from "styled-components";
 
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  & > * {animation: ${appear} 1s;}
-  .appear {
-    visibility: visible;
-    transition: all .45s;
-  }
 
   & > a {
     @media (max-width: 670px) {
       width: 100%;
+      padding: 0 20px;
     }
   }
 `;
 
 export const Content = styled.div`
-  visibility: hidden;
   border-radius: 8px;
   border: 1px solid ${props => props.theme.grey};
   background: ${props => props.theme.background2};
@@ -47,6 +33,7 @@ export const Content = styled.div`
   hgroup {
     display: flex;
     align-items: center;
+    gap: 8px;
     justify-content: space-between;
 
     .name {
@@ -58,6 +45,10 @@ export const Content = styled.div`
         color: ${props => props.theme.greyText};
         font-size: 16px;
       }
+
+      white-space: nowrap;                  
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .repo-info {
@@ -87,7 +78,6 @@ export const Content = styled.div`
   }
 
   @media (max-width: 670px) {
-    width: auto;
-    margin: 0 20px;
+    width: 100%;
   }
 `;

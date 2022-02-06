@@ -1,5 +1,4 @@
 import { Container, Content } from "./style";
-import { useInView,  } from "react-intersection-observer";
 
 interface UserRepoProps {
   name: string
@@ -11,16 +10,11 @@ interface UserRepoProps {
 }
 
 export default function Card({ name, html_url, fork, language, stargazers_count, description}: UserRepoProps){
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-    delay: 20,
-    triggerOnce: true
-  });
 
   return (
     <Container>
       <a href={html_url} target="_blank" rel="noreferrer">
-        <Content ref={ref} className={inView ? "appear" : ""} >
+        <Content>
           <hgroup>
             <div className="name">
               {name}

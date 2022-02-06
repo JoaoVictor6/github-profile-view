@@ -126,7 +126,7 @@ export const Tabs = styled.div`
     background: none; 
     border: none;
     background: -webkit-linear-gradient(#4E54C8, #8F94FB);
-    background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 24px;
     line-height: 24px;
