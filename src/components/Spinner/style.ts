@@ -7,12 +7,13 @@ const roller = keyframes`
 `;
 
 function delayAnimation(){
-  let delays = "";
-  for (let index = 1; index <= 8; index++) {
-    delays += `\ndiv:nth-child(${index}) { animation-delay: ${index*0.15}s; }`;
-  }
-  console.log(delays);
-  return delays;
+  const delays = Array.from({
+    length: 7
+  }, (_, index) => (
+    `div:nth-child(${index}) { animation-delay: ${(index+1)*0.15}s; }`)
+  );
+
+  return delays.reduce((prev, curr) => prev+=curr, "");
 }
 
 export const SpinnerElement = styled.div`
