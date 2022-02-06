@@ -141,15 +141,19 @@ export const Container = styled.main`
 
   @media (max-width: 834px) {
     .logo {
-      left: 58px;
-      top: 208px;
+      position: relative;
+      margin: 0;
+      left: 0;
+      top: 0;
     }
     form {
       width: 100%;
-      align-items: stretch;
+      padding: 16px;
+      margin-top: 0;
+      /* align-items: stretch; */
       input { 
-        margin: 0 54px;
-        width: auto;
+        margin: 0;
+        width: 100%;
       }
       button {
         margin: 0 auto;
@@ -158,10 +162,13 @@ export const Container = styled.main`
   }
   @media (max-width: 584px) {
     .logo {
-      left: 40px;
-      top: 60px;
+      position: relative;
+      left: 0;
+      top: 0;
+      align-self: flex-start;
       font-size: 64px;
       width: 235px;
+      margin-left: 16px;
 
       &::before {
         width: 118px;
@@ -180,7 +187,7 @@ export const Container = styled.main`
       align-items: center;
       input, button {
         margin: 0;
-        width: 316px;
+        /* width: 316px; */
         border-radius: 8px;
       }
 
@@ -189,6 +196,7 @@ export const Container = styled.main`
       }
       button {
         font-size: 20px;
+        width: 100%;
       }
     }
     footer {
@@ -206,6 +214,14 @@ export const Container = styled.main`
     }
     form {
       margin: 0;
+    }
+  }
+  @media (width: 912px) and (height: 1368px){
+    .logo {
+      position: relative;
+      margin: 0;
+      left: 0;
+      top: 0;
     }
   }
 `;
