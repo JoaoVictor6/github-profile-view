@@ -12,6 +12,7 @@ export default function Home() {
   function submitHandler(event:FormEvent<HTMLFormElement>){
     event.preventDefault();
     const name = ref.current?.value || "" ;
+    if(name === "")return;
     setIsLoading(true);
     route.push(`/user/${name}`);
   }
