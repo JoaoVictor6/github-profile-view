@@ -22,6 +22,7 @@ export const Container = styled.section`
   & > a {
     @media (max-width: 670px) {
       width: 100%;
+      padding: 0 20px;
     }
   }
 `;
@@ -47,6 +48,7 @@ export const Content = styled.div`
   hgroup {
     display: flex;
     align-items: center;
+    gap: 8px;
     justify-content: space-between;
 
     .name {
@@ -58,6 +60,10 @@ export const Content = styled.div`
         color: ${props => props.theme.greyText};
         font-size: 16px;
       }
+
+      white-space: nowrap;                  
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .repo-info {
@@ -87,7 +93,6 @@ export const Content = styled.div`
   }
 
   @media (max-width: 670px) {
-    width: auto;
-    margin: 0 20px;
+    width: 100%;
   }
 `;
