@@ -1,16 +1,14 @@
 import styled, { keyframes } from "styled-components";
 
 const gradient = keyframes`
-  from {
-    trans 0% {
-		background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  0% {
+  background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 `;
 
@@ -122,6 +120,7 @@ export const Container = styled.main`
     button {
       font-size: 22px;
       width: 502px;
+      height: 51px;
       border:none;
       cursor: pointer;
       font-weight: 500;
