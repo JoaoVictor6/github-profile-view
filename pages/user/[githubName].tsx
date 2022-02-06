@@ -107,6 +107,7 @@ function User({error, repo, userInfo: userData}: InferGetServerSidePropsType<Get
           description="Maybe this user does not exist"
           imgUrl="https://i.ibb.co/TqhVm8R/User-not-found-thumb.png"
           url="/404"
+          noindex
         />
       )}
     </>
