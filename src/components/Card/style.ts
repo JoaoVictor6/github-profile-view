@@ -1,23 +1,9 @@
-import styled, { keyframes } from "styled-components";
-
-const appear = keyframes`
-  to{   
-    transform: translateX(-10px);
-  }
-  from {
-    transform: translateX(0);
-  }
-`;
+import styled from "styled-components";
 
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  & > * {animation: ${appear} 1s;}
-  .appear {
-    visibility: visible;
-    transition: all .45s;
-  }
 
   & > a {
     @media (max-width: 670px) {
@@ -28,7 +14,6 @@ export const Container = styled.section`
 `;
 
 export const Content = styled.div`
-  visibility: hidden;
   border-radius: 8px;
   border: 1px solid ${props => props.theme.grey};
   background: ${props => props.theme.background2};

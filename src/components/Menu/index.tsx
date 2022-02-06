@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
 import { Bold, Container, Tabs } from "./style";
 
 interface MenuProps {
@@ -20,20 +19,10 @@ export default function Menu({
   following,
   html_url
 }: MenuProps){
-  const [sticky, setSticky] = useState<boolean>(false);
-  const {ref, inView} = useInView({
-    threshold: 0,
-  });
-
-  useEffect(() => {
-    if(!inView){
-      setSticky(!sticky);
-    }
-  }, [inView]);
 
   return(
-    <Container className={sticky ? "sticky" : ""}>
-      <div ref={ref} className="user-data">
+    <Container>
+      <div className="user-data">
         <img src={avatar_url} alt="User picture" />
         <section>
           <h1>
