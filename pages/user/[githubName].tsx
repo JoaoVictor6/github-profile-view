@@ -60,10 +60,10 @@ export async function getServerSideProps(ctx:GetServerSidePropsContext<{
 function User({error, repo, userInfo: userData}: InferGetServerSidePropsType<GetServerSideProps<UserPropsSSR>>){
   const router = useRouter();
   useEffect(() => {
+    console.log(userInfo);
     if(error.message !== ""){
       router.push("/404/");
     }
-    console.log(userInfo);
   },[]);
   
   return(
