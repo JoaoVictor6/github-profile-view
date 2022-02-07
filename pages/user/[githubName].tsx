@@ -67,7 +67,7 @@ function User({error, repo, userInfo: userData}: InferGetServerSidePropsType<Get
   
   return(
     <>
-      {userData && (
+      {userData ? (
         <>
           <HeadElement 
             title={`${userData.name} - Github profile`}
@@ -102,6 +102,14 @@ function User({error, repo, userInfo: userData}: InferGetServerSidePropsType<Get
             </div>
           </Container>
         </>
+      ): (
+        <HeadElement 
+          title="User not found"
+          description="Maybe this user does not exist"
+          imgUrl="https://i.ibb.co/TqhVm8R/User-not-found-thumb.png"
+          url="/404"
+          noindex
+        />
       )}
     </>
   );
