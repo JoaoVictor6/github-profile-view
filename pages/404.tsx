@@ -1,12 +1,16 @@
-import Head from "next/head";
+import { HeadElement } from "../src/components/HeadElement";
 import SearchInput from "../src/components/SearchInput";
 import { Container } from "../styles/404";
 export default function custom404(){
   return(
     <>
-      <Head>
-        <title>User not found</title>
-      </Head>
+      <HeadElement 
+        title="User not found"
+        description=""
+        imgUrl=""
+        url="/404"
+        noindex
+      />
       <Container>
         <SearchInput />
         <div>

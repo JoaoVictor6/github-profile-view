@@ -73,23 +73,28 @@ export const Container = styled.div`
   @media (max-width: 704px) {
     
     .message {
-      display: inline-flex;
-      width: calc(100% - 32px);
+      display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0;
       .error-code {
         ${errorCodeFontMobile}; 
       }
+      
       .message-user {
+        align-self: auto;
         font-size: 32px;
-        align-self: flex-end;
       }
     }
 
     a {
       margin-top: 64px; 
       align-self: center;
+    }
+  }
+
+  @media (max-width: 375px){
+    .message {
     }
   }
 `;

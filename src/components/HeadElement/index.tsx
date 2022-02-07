@@ -5,14 +5,15 @@ type HeadElementProps = {
   description: string
   url: string
   imgUrl: string
+  noindex?: boolean
 }
 
-export function HeadElement({ title, description, url, imgUrl }:HeadElementProps){
+export function HeadElement({ title, description, url, imgUrl, noindex }:HeadElementProps){
   return(
     <Head>
       {/* <!-- Primary Meta Tags --> */}
       <title>{title}</title>
-      <meta name="title" content="GIthub user preview" />
+      <meta name="title" content={title} />
       <meta name="description" content={description} />
 
       {/* <!-- Open Graph / Facebook --> */}
@@ -29,6 +30,13 @@ export function HeadElement({ title, description, url, imgUrl }:HeadElementProps
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={imgUrl} />
 
+      {/* <!-- Robots --> */}
+      {noindex && (
+        <>
+          <meta name="robots" content="noindex" />
+          <meta name="googlebot" content="noindex" />
+        </>
+      )}
     </Head>
   );
 }
