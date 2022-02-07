@@ -1,5 +1,11 @@
-# [2022-02-05] version 1.0.0
+# [2022-02-07] version 1.0.1
 
+### UPDATE
+- Improve responsiveness
 ### ADDED 📰
   - Server side rendering
-  - [next.js version 12](https://nextjs.org/blog/next-12)
+    - Now index(home) and 404 page renders in build time only 
+  - Static paths(SSG)
+  - loading animation in home button
+  - metatags in case user not found in `[githubName].tsx`
+  - robot.txt
