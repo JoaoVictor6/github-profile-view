@@ -37,7 +37,6 @@ export async function apiSearch(user: string): Promise<UserInfo | null> {
       login, 
       name
     } = (await api.get<UserInfo>(`/users/${user}`)).data;
-    console.log(repoResponse);
     return {
       avatar_url, 
       bio, 

@@ -9,6 +9,7 @@ import { apiSearch } from "../../src/services/github";
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { UserPropsSSR } from "../../src/interfaces/User";
 import { HeadElement } from "../../src/components/HeadElement";
+import { userInfo } from "os";
 
 export async function getServerSideProps(ctx:GetServerSidePropsContext<{
   githubName: string
@@ -62,6 +63,7 @@ function User({error, repo, userInfo: userData}: InferGetServerSidePropsType<Get
     if(error.message !== ""){
       router.push("/404/");
     }
+    console.log(userInfo);
   },[]);
   
   return(
