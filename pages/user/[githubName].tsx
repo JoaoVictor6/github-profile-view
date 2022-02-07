@@ -9,6 +9,7 @@ import { apiSearch } from "../../src/services/github";
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { UserPropsSSR } from "../../src/interfaces/User";
 import { HeadElement } from "../../src/components/HeadElement";
+import { userInfo } from "os";
 
 export async function getServerSideProps(ctx:GetServerSidePropsContext<{
   githubName: string
@@ -62,11 +63,11 @@ function User({error, repo, userInfo: userData}: InferGetServerSidePropsType<Get
     if(error.message !== ""){
       router.push("/404/");
     }
-  },[router]);
+  },[]);
   
   return(
     <>
-      {userData ? (
+      {userData && (
         <>
           <HeadElement 
             title={`${userData.name} - Github profile`}
@@ -101,14 +102,6 @@ function User({error, repo, userInfo: userData}: InferGetServerSidePropsType<Get
             </div>
           </Container>
         </>
-      ) : (
-        <HeadElement 
-          title="User not found"
-          description="Maybe this user does not exist"
-          imgUrl="https://i.ibb.co/TqhVm8R/User-not-found-thumb.png"
-          url="/404"
-          noindex
-        />
       )}
     </>
   );
