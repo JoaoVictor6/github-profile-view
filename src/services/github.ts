@@ -24,18 +24,28 @@ interface UserInfo {
   repo: Repositories[]
 }
 
-export async function apiSearch(user: string): Promise<{ success: true, payload: UserInfo } | { success: false, error: string, notFound?: true }> {
+type ApiResponse<T> = T | { message: string }
+
+type ApiSearchReturn = { 
+  success: boolean,
+  payload?: UserInfo,
+  error?: {
+    message: unknown,
+    notFound?: boolean
+  }
+}
+
+export async function apiSearch(user: string):Promise<ApiSearchReturn> {
   try {
-    const userResponse = (await api.get<UserInfo | { message: string }>(`/users/${user}`)).data;
+    const userResponse = (await api.get<ApiResponse<UserInfo>>(`/users/${user}`)).data;
     const repoResponse  = (await api.get<Repositories[] | { message: string }>(`/users/${user}/repos`)).data;
-    if((!!userResponse.message && userResponse.message === "Not Found") 
-      // eslint-disable-next-line
-      //@ts-ignore: Erro do ts de que message não existe no tipo Repositories[] | { message: string } ??? Mas deve funcionar sem pb
-      || (!!repoResponse.message && repoResponse.message === "Not Found")) {
+    if((userResponse.message === "Not Found")) {
       return {
         success: false,
-        error: "User not found",
-        notFound: true
+        error: {
+          message: "user not found",
+          notFound: true
+        },
       };
     }
 
@@ -73,7 +83,10 @@ export async function apiSearch(user: string): Promise<{ success: true, payload:
   } catch(err) {
     return {
       success: false,
-      error: err as string
+      error: {
+        notFound: true,
+        message: err
+      }
     };
   }
 }
