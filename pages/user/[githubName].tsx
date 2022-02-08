@@ -21,14 +21,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   if(!userInfo.success)return {
     notFound: true
   };
-  if (!userInfo.success) return {
+  if (!userInfo.payload) return {
     redirect: {
       destination: "/500",
       permanent: false
     }
-  };
-  if(!userInfo.payload)return {
-    notFound: true
   };
 
   const { repo, ...infos } = userInfo.payload;
