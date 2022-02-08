@@ -6,8 +6,8 @@ export default function custom404(){
     <>
       <HeadElement 
         title="User not found"
-        description=""
-        imgUrl=""
+        description="404 PAGE"
+        imgUrl="https://i.ibb.co/TqhVm8R/User-not-found-thumb.png"
         url="/404"
         noindex
       />
