@@ -1,5 +1,7 @@
+# [2022-02-08] version 1.0.2 (BREAKING CHANGE)
+### FIX
+  - error 404 in any page (@Vic853 PR[#35](https://github.com/JoaoVictor6/github-profile-view/pull/35))
 # [2022-02-07] version 1.0.1
-
 ### UPDATE
 - Improve responsiveness
 
@@ -15,3 +17,8 @@
   - loading animation in home button
   - metatags in case user not found in `[githubName].tsx`
   - robot.txt
+  # [2022-02-05] version 1.0.0
+
+### ADDED 📰
+  - Server side rendering
+  - [next.js version 12](https://nextjs.org/blog/next-12)
