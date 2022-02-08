@@ -18,45 +18,35 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { githubName } = ctx.params as { githubName: string };
 
   const userInfo = await apiSearch(githubName);
-  if(!userInfo.success && !userInfo.notFound)return {
+  if(!userInfo.success)return {
     notFound: true
   };
-  else if (!userInfo.success) return {
+  if (!userInfo.success) return {
     redirect: {
       destination: "/500",
       permanent: false
     }
   };
+  if(!userInfo.payload)return {
+    notFound: true
+  };
 
-  const { 
-    avatar_url, 
-    bio, 
-    followers, 
-    following, 
-    html_url, 
-    login, 
-    name,
-    repo
-  } = userInfo.payload;
+  const { repo, ...infos } = userInfo.payload;
 
   return {
     props: {
       userInfo: {
-        avatar_url, 
-        bio, 
-        followers, 
-        following, 
-        html_url, 
-        login, 
-        name          
+        ...infos        
       },
       repo,
     }
   };
 };
 
-function User({repo, userInfo: userData}: InferGetServerSidePropsType<GetServerSideProps<UserPropsSSR>>){
-  
+function User({
+  repo,
+  userInfo: userData
+}: InferGetServerSidePropsType<GetServerSideProps<UserPropsSSR>>){
   return(
     <>
       <HeadElement 
